@@ -1,0 +1,885 @@
+/* Start Variables */
+:root {
+    --mainColor: #8B4513;
+    --secondary-color: black;
+    --navbar-color: #c49b63;
+}
+
+/* Start Global Rules */
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    text-transform: capitalize;
+}
+
+::selection {
+    color: var(--mainColor);
+    background-color: var(--secondary-color);
+}
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dots span {
+    width: 15px;
+    height: 15px;
+    background: var(--mainColor);
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+}
+
+.dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+/* nav bar */
+.welcome {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--secondary-color);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 0.6s ease;
+}
+
+.welcome.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.welcome h1 {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+}
+
+.mylink {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.welcome h1 span {
+    color: var(--navbar-color);
+}
+
+.welcome h1 span::selection {
+    color: var(--secondary-color);
+    background-color: var(--navbar-color);
+}
+
+.links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.links ul li {
+    display: inline-block;
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -2px;
+    background-color: var(--mainColor);
+    transition: width 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 100%;
+}
+
+.link_login {
+    background: var(--navbar-color);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.link_login:hover {
+    background: #fff;
+    color: var(--mainColor);
+}
+
+.link_login::after {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--navbar-color, #333);
+    background: none;
+    border: none;
+    padding: 0.5rem;
+}
+
+.link_login_mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .links .link_login {
+        display: none;
+    }
+
+    .link_login_mobile {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 16px;
+        background: var(--navbar-color);
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 20px;
+        letter-spacing: 0.4px;
+        transition: background 0.2s ease;
+    }
+
+    .link_login_mobile:hover {
+        background: #fff;
+        color: var(--mainColor);
+    }
+
+    .right_side {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* contact us */
+.reservation {
+    background-image: url("../img/login_19.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 50px;
+    padding-top: 30px;
+}
+
+/* ===== Reservation Section with Glassmorphism and Title on Top ===== */
+#reservation-section {
+    position: relative;
+    max-width: 700px;
+    width: 90%;
+    margin: 100px auto 50px auto;
+    padding: 60px 35px 40px 35px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* العنوان فوق الفورم بدون صندوق */
+#reservation-section h2 {
+    font-size: 2.2rem;
+    color: var(--navbar-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    display: block;
+    text-align: center;
+}
+
+/* الفورم */
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #222;
+}
+
+.form-group input:focus {
+    border-color: #8B4513;
+    background-color: rgba(255, 255, 255, 0.35);
+    outline: none;
+    box-shadow: 0 0 15px rgba(139, 69, 19, 0.3);
+}
+
+input[type="date"]:focus::-webkit-datetime-edit {
+    color: #222;
+    font-weight: 600;
+}
+
+input[type="date"]:focus::-webkit-datetime-edit-fields-wrapper {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 4px 8px;
+    box-shadow: 0 2px 6px rgba(139, 69, 19, 0.15);
+}
+
+input::placeholder {
+    color: #b6b1b1;
+    opacity: 1;
+}
+
+.reserve-btn {
+    background: linear-gradient(135deg, #8B4513, #c49b63);
+    color: #fff;
+    padding: 18px 32px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.reserve-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #c49b63, #8B4513);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+    #reservation-section {
+        padding: 55px 30px 35px 30px;
+    }
+
+    #reservation-section h2 {
+        font-size: 2rem;
+        margin-bottom: 35px;
+    }
+
+    .form-group input {
+        padding: 15px 18px;
+        font-size: 1rem;
+    }
+
+    .reserve-btn {
+        padding: 16px 28px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #reservation-section {
+        padding: 45px 25px 30px 25px;
+    }
+
+    #reservation-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .form-group input {
+        padding: 14px 16px;
+    }
+
+    .reserve-btn {
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #reservation-section {
+        padding: 35px 15px 25px 15px;
+    }
+
+    #reservation-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+
+    .form-group input {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    .reserve-btn {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Footer */
+.footer {
+    background: var(--secondary-color);
+    color: #fff;
+    padding: 50px 20px 20px;
+    margin-top: 0px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-about h2 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.footer-about span {
+    color: var(--navbar-color);
+}
+
+.footer-about p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--navbar-color);
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--navbar-color);
+}
+
+.footer-social {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s;
+    margin: 2px;
+}
+
+.social-icons a:hover {
+    color: var(--navbar-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+}
+
+.footer-bottom a span {
+    position: relative;
+    color: var(--navbar-color);
+    text-decoration: none;
+}
+
+.footer-bottom a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--navbar-color);
+    transition: width 0.3s ease;
+}
+
+.footer-bottom a span:hover::after {
+    width: 100%;
+}
+
+.footer-bottom p {
+    margin: 8px 0;
+}
+
+/* ===================== Responsive Design ===================== */
+
+@media (max-width: 768px) {
+
+    /* ===== Navbar Mobile ===== */
+    .welcome {
+        padding: 0 18px;
+        height: 58px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .welcome h1 {
+        font-size: 19px;
+        letter-spacing: 0.5px;
+    }
+
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        background: rgba(196, 155, 99, 0.15);
+        color: var(--navbar-color);
+        transition: background 0.2s ease;
+    }
+
+    .hamburger:hover {
+        background: rgba(196, 155, 99, 0.28);
+    }
+
+    .links {
+        display: none;
+        position: fixed;
+        top: 58px;
+        left: 0;
+        right: 0;
+        background: #111;
+        border-bottom: 2px solid var(--navbar-color);
+        padding: 8px 0 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .links.active {
+        display: flex;
+        animation: slideDown 0.25s ease forwards;
+    }
+
+    .links ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: left;
+        padding: 0 6px;
+    }
+
+    .links ul li {
+        width: 100%;
+    }
+
+    .links a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 13px 18px;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        border-radius: 8px;
+        border-bottom: none;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .links a:hover {
+        background: rgba(196, 155, 99, 0.12);
+        color: var(--navbar-color);
+    }
+
+    .links a.link_login {
+        display: none;
+    }
+
+    .links a:last-child {
+        border-bottom: none;
+    }
+
+    .links a::after {
+        display: none;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+    /* about_us box */
+    .reservation {
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        margin-top: 70px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .footer-social .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+/* ===================== التابلت ===================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .welcome {
+        padding: 13px 28px;
+    }
+
+    .welcome h1 {
+        font-size: 21px;
+    }
+
+    .links ul {
+        gap: 18px;
+    }
+
+    .links a {
+        font-size: 14px;
+    }
+
+    .link_login {
+        padding: 7px 15px;
+        font-size: 13px;
+        border-radius: 18px;
+    }
+
+    #reservation-section {
+        padding: 80px 40px 50px;
+    }
+}
+
+
+/* ================= Small Mobile Navbar (max-width: 480px) ================= */
+@media (max-width: 480px) {
+    .welcome {
+        padding: 0 14px;
+        height: 54px;
+    }
+
+    .welcome h1 {
+        font-size: 17px;
+    }
+
+    .link_login_mobile {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .hamburger {
+        font-size: 1.35rem;
+        width: 34px;
+        height: 34px;
+    }
+
+    .links {
+        top: 54px;
+    }
+
+    .links a {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+}
+
+/* ==========================
+   Custom Scrollbar – Dark & Sleek
+========================== */
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #8B4513 #121212;
+}
+
+/* Webkit Browsers: Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #121212;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8B4513;
+    border-radius: 10px;
+    border: 3px solid #121212;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5c2f0c;
+    transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-corner {
+    background: #121212;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+body.swal2-shown {
+    overflow-y: scroll !important;
+    padding-right: 0 !important;
+}
+
+/* إزالة الأسهم في Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ===== Intro Section ===== */
+.intro {
+    color: #fff;
+    text-align: center;
+    padding: 70px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-right: 0;
+}
+
+/* Subtle animated background glow */
+.intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: glow 6s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes glow {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 0.9;
+    }
+}
+
+/* Content box */
+.intro-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 20px;
+}
+
+/* Headings */
+.intro h1 {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.intro h1 span {
+    color: var(--navbar-color);
+}
+
+/* Paragraphs */
+.intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #f5f5f5;
+}
+
+.intro .login-text {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.intro .login-text a {
+    color: var(--navbar-color);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.intro .login-text a:hover {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+/* ===== Responsive (Mobile) ===== */
+@media (max-width: 768px) {
+    .intro {
+        padding: 80px 15px;
+        padding-right: 0;
+    }
+
+    .intro-content {
+        padding: 30px 15px;
+    }
+
+    .intro h1 {
+        font-size: 1.8rem;
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+
+    .intro .login-text a {
+        font-size: 1rem;
+    }
+}
+
+.footer-about strong {
+    color: var(--navbar-color);
+}
+
+.footer-about a {
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-about a:hover {
+    color: var(--navbar-color);
+}
